@@ -15,4 +15,5 @@ Vamos testar os algoritmos com:
 Também vamos comparar os tempos de execução para diferentes tamanhos de entrada.
 
 
-![alt text](dados_ordenados.png)
+[resultados.csv](https://github.com/user-attachments/files/32023919/resultados.csv)
+<img width="1652" height="997" alt="dados_ordenados" src="https://github.com/user-attachments/assets/74fcfba6-4af7-411e-9706-3a9110ea1bad" /><img width="1653" height="993" alt="dados_aleatorios" src="https://github.com/user-attachments/assets/e6e450ea-4dcf-49bf-803e-0c745dca1885" />
