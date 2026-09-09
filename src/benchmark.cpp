@@ -1,7 +1,29 @@
+#include <chrono>
+#include <algorithm>
+#include <random>
 #include <iostream>
 #include <vector>
 
 using namespace std;
+
+vector<int> tamanhos = {
+    1000,
+    2000,
+    4000,
+    8000,
+    16000
+};
+
+vector<int> criarDadosAleatorios(int tamanho, mt19937& gerador) {
+
+    vector<int> dados(tamanho);
+
+    for (int i = 0; i < tamanho; i++) {
+        dados[i] = gerador() % 100000;
+    }
+
+    return dados;
+}
 
 void insertionSort(vector<int>& dados) {
 
@@ -74,4 +96,26 @@ void mergeSort(vector<int>& dados, int inicio, int fim) {
     mergeSort(dados, meio + 1, fim);
 
     merge(dados, inicio, meio, fim);
+}
+
+long long medirTempoInsertion(vector<int> dados) {
+
+    auto inicio = chrono::high_resolution_clock::now();
+
+    insertionSort(dados);
+
+    auto fim = chrono::high_resolution_clock::now();
+
+    return chrono::duration_cast<chrono::microseconds>(fim - inicio).count();
+}
+
+long long medirTempoMerge(vector<int> dados) {
+
+    auto inicio = chrono::high_resolution_clock::now();
+
+    mergeSort(dados, 0, dados.size() - 1);
+
+    auto fim = chrono::high_resolution_clock::now();
+
+    return chrono::duration_cast<chrono::microseconds>(fim - inicio).count();
 }
