@@ -109,34 +109,59 @@ long long medirTempoMerge(vector<int> dados) {
 }
 
 int main() {
+
     mt19937 gerador(2026);
+
     for (int tamanho : tamanhos) {
+
         vector<int> dadosAleatorios =
             criarDadosAleatorios(tamanho, gerador);
+
         vector<int> dadosOrdenados = dadosAleatorios;
+
         sort(dadosOrdenados.begin(), dadosOrdenados.end());
 
+        // Aquecimento
+        medirTempoInsertion(dadosAleatorios);
+        medirTempoMerge(dadosAleatorios);
+
+        // 3 medições
+        vector<long long> insertionAleatorio;
+        vector<long long> insertionOrdenado;
+        vector<long long> mergeAleatorio;
+        vector<long long> mergeOrdenado;
+
+        for (int i = 0; i < 3; i++) {
+
+            insertionAleatorio.push_back(
+                medirTempoInsertion(dadosAleatorios));
+
+            insertionOrdenado.push_back(
+                medirTempoInsertion(dadosOrdenados));
+
+            mergeAleatorio.push_back(
+                medirTempoMerge(dadosAleatorios));
+
+            mergeOrdenado.push_back(
+                medirTempoMerge(dadosOrdenados));
+        }
+
+        sort(insertionAleatorio.begin(), insertionAleatorio.end());
+        sort(insertionOrdenado.begin(), insertionOrdenado.end());
+        sort(mergeAleatorio.begin(), mergeAleatorio.end());
+        sort(mergeOrdenado.begin(), mergeOrdenado.end());
+
         cout << "Tamanho: " << tamanho << endl;
-        long long tempoInsertion = medirTempoInsertion(dadosAleatorios);
+        cout << "Insertion aleatorio: "
+             << insertionAleatorio[1] << " us" << endl;
+        cout << "Insertion ordenado: "
+             << insertionOrdenado[1] << " us" << endl;
+        cout << "Merge aleatorio: "
+             << mergeAleatorio[1] << " us" << endl;
+        cout << "Merge ordenado: "
+             << mergeOrdenado[1] << " us" << endl;
 
-        cout << "Insertion Sort (aleatorio): "
-            << tempoInsertion << " microssegundos" << endl;
-     
-        long long tempoInsertionOrdenado = medirTempoInsertion(dadosOrdenados);
-
-        cout << "Insertion Sort (ordenado): "
-            << tempoInsertionOrdenado << " microssegundos" << endl;
-     
-        long long tempoMerge = medirTempoMerge(dadosAleatorios);
-
-        cout << "Merge Sort (aleatorio): "
-            << tempoMerge << " microssegundos" << endl;
-            
-        long long tempoMergeOrdenado = medirTempoMerge(dadosOrdenados);
-
-        cout << "Merge Sort (ordenado): "
-            << tempoMergeOrdenado << " microssegundos" << endl;
-
+        cout << "------------------------" << endl;
     }
 
     return 0;
