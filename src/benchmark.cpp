@@ -3,6 +3,7 @@
 #include <random>
 #include <iostream>
 #include <vector>
+#include <fstream>
 
 using namespace std;
 
@@ -109,9 +110,9 @@ long long medirTempoMerge(vector<int> dados) {
 }
 
 int main() {
-
     mt19937 gerador(2026);
-
+    ofstream arquivo("resultados.csv");
+    arquivo << "tamanho,insertion_aleatorio,insertion_ordenado,merge_aleatorio,merge_ordenado\n";
     for (int tamanho : tamanhos) {
 
         vector<int> dadosAleatorios =
@@ -151,6 +152,12 @@ int main() {
         sort(mergeAleatorio.begin(), mergeAleatorio.end());
         sort(mergeOrdenado.begin(), mergeOrdenado.end());
 
+        arquivo << tamanho << ","
+        << insertionAleatorio[1] << ","
+        << insertionOrdenado[1] << ","
+        << mergeAleatorio[1] << ","
+        << mergeOrdenado[1] << "\n";
+
         cout << "Tamanho: " << tamanho << endl;
         cout << "Insertion aleatorio: "
              << insertionAleatorio[1] << " us" << endl;
@@ -163,6 +170,6 @@ int main() {
 
         cout << "------------------------" << endl;
     }
-
+    arquivo.close();
     return 0;
 }
