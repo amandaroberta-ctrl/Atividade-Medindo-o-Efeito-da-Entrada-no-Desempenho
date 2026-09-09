@@ -75,11 +75,13 @@ Gráficos
 
 Dados aleatórios
 
-![Dados aleatórios](graficos/dados_aleatorios.png)
+<img width="1653" height="993" alt="dados_aleatorios" src="https://github.com/user-attachments/assets/1bbeeade-b1c9-4355-88f5-7320ffd35e9b" />
+
 
 Dados ordenados
 
-![Dados ordenados](graficos/dados_ordenados.png)
+<img width="1652" height="997" alt="dados_ordenados" src="https://github.com/user-attachments/assets/68e00d82-56ab-44ce-aa7d-99d34846a9ba" />
+
 
 Conclusão
 
