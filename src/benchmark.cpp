@@ -119,3 +119,22 @@ long long medirTempoMerge(vector<int> dados) {
 
     return chrono::duration_cast<chrono::microseconds>(fim - inicio).count();
 }
+
+int main() {
+
+    mt19937 gerador(2026);
+
+    for (int tamanho : tamanhos) {
+
+        vector<int> dadosAleatorios =
+            criarDadosAleatorios(tamanho, gerador);
+
+        vector<int> dadosOrdenados = dadosAleatorios;
+
+        sort(dadosOrdenados.begin(), dadosOrdenados.end());
+
+        cout << "Tamanho: " << tamanho << endl;
+    }
+
+    return 0;
+}
