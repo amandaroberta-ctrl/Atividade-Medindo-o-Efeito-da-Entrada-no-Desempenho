@@ -13,3 +13,6 @@ Vamos testar os algoritmos com:
 - entradas ordenadas.
 
 Também vamos comparar os tempos de execução para diferentes tamanhos de entrada.
+
+
+![alt text](dados_ordenados.png)
